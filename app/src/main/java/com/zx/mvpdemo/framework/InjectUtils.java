@@ -150,7 +150,6 @@ public class InjectUtils {
         Method[] methods = handlerType.getDeclaredMethods();
         if (methods != null && methods.length > 0) {
             for (Method method : methods) {
-
                 // 注意：静态方法不允许添加控件注解,私有方法运行访问，非私有方法不允许访问
                 // 在XUtils框架3.0之后，要求我们的方法必须是私有方法(注意：public不行)
                 // 希望该方法配置了注解，不希望子类继承，只有当前类可以享受

@@ -11,7 +11,5 @@ import com.zx.mvpdemo.simple.demo8.base.BaseView_8;
 
 //用于V层和M层交互的接口
 public interface LoginView_8 extends BaseView_8 {
-
     void onLoginResult(String result);
-
 }

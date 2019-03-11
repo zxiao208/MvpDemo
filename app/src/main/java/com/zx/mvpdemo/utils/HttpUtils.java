@@ -34,14 +34,14 @@ public class HttpUtils {
 		httpConn.connect();
 		// 建立输入流，向指向的URL传入参数
 		DataOutputStream dos = new DataOutputStream(httpConn.getOutputStream());
-		dos.writeBytes(param.toString());
+		dos.writeBytes(param);
 		dos.flush();
 		dos.close();
 		// 获得响应状态
 		int resultCode = httpConn.getResponseCode();
 		sb = new StringBuffer();
 		if (HttpURLConnection.HTTP_OK == resultCode) {
-			String readLine = new String();
+			String readLine;
 			//解析网络请求数据
 			BufferedReader responseReader = new BufferedReader(
 					new InputStreamReader(httpConn.getInputStream(), "UTF-8"));

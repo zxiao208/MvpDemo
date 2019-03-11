@@ -14,7 +14,6 @@ import com.zx.mvpdemo.simple.demo8.LoginPresenter_8;
 import com.zx.mvpdemo.simple.demo8.LoginView_8;
 import com.zx.mvpdemo.simple.demo8.base.BaseActivity_8;
 
-
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> implements LoginView_8 {
 
@@ -224,7 +223,6 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
     public void onLoginResult(String result) {
         Toast.makeText(MainActivity.this, "登录结果：" + result, Toast.LENGTH_LONG).show();
     }
-
     //很多时候：技术，思路？
 
 }

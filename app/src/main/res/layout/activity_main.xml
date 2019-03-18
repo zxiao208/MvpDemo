@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/colorAccent"
         android:layout_marginLeft="50dp"/>
+
     <com.zx.mvpdemo.myview.MyFlowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,19 +71,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="rrrrrrrrrrr"
-            /> <Button
+            />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="zhangd4444san"
-        /> <Button
+        />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="zhangsan"
-        /> <Button
+        />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="eee"
-        /> <Button
+        />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ddw"

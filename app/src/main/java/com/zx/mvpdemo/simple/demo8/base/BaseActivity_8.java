@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
  */
 
 public abstract class BaseActivity_8<V extends BaseView_8, P extends BasePresenter_8<V>> extends Activity {
-
     private P presenter;
     private V view;
 

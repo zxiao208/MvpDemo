@@ -1,6 +1,11 @@
 package com.zx.mvpdemo;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,6 +18,7 @@ import com.zx.mvpdemo.framework.ViewInject;
 import com.zx.mvpdemo.simple.demo8.LoginPresenter_8;
 import com.zx.mvpdemo.simple.demo8.LoginView_8;
 import com.zx.mvpdemo.simple.demo8.base.BaseActivity_8;
+import com.zx.xutils.binderservice.IMyAidlInterface;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> implements LoginView_8 {
@@ -24,6 +30,7 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
     private Button bt_2;
 //    private LoginPresenter_4 presenter;
 
+    private IMyAidlInterface myAidlInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +49,31 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
             type = View.OnClickListener.class,
             setter = "setOnClickListener",
             method = "onClick")
-    public void click(View v) {
+          public void click(View v) {
         if (v.getId() == R.id.bt_1) {
-            Toast.makeText(this, "点击了Button->1", Toast.LENGTH_LONG).show();
-            loginServer();
+            Toast.makeText(MainActivity.this, "点击了Button->1", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent();
+                intent.setAction("com.zx.xutils.myservice.MyService");
+                intent.setPackage("com.zx.xutils.binderservice");
+                bindService(intent, new ServiceConnection() {
+                    @Override
+                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                        myAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+                        try {
+                            myAidlInterface.setName("大炮");
+                            Toast.makeText(MainActivity.this,myAidlInterface.getName(),Toast.LENGTH_LONG).show();
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName componentName) {
+
+                    }
+                },BIND_AUTO_CREATE);
+//            loginServer();
         } else if (v.getId() == R.id.bt_2) {
             Toast.makeText(this, "点击了Button->2", Toast.LENGTH_LONG).show();
         }

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.zx.mvpdemo.MainActivity">
 
@@ -28,5 +29,68 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/colorAccent"
         android:layout_marginLeft="50dp"/>
-
+    <com.zx.mvpdemo.myview.MyFlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zhangdgdgdgdggsan"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zhangddddddddddddddddsan"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zhandddgsan"
+            /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dfd"
+        /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fd"
+        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dsaf"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rrrrrrrrrrr"
+            /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zhangd4444san"
+        /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zhangsan"
+        /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="eee"
+        /> <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ddw"
+        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ddddddddddddddddddddddd"
+            />
+    </com.zx.mvpdemo.myview.MyFlowLayout>
 </LinearLayout>

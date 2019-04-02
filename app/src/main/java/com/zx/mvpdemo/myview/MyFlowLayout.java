@@ -78,7 +78,7 @@ public class MyFlowLayout extends ViewGroup {
             MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
             // 如果当前行中剩余的空间不足以容纳下一个子元素，则换行
             // 换行的同时，保存当前行中的所有元素，叠加行高，然后将行宽和行高重置为0
-            if (lineWidth + childWidth + lp.leftMargin + lp.rightMargin > widthsize - getPaddingLeft() - getPaddingRight()) {
+            if (lineWidth + childWidth + lp.leftMargin + lp.rightMargin >widthsize - getPaddingLeft() - getPaddingRight()){
                 //存满了一行，加入到views
                 views.add(lineViews);
                 //存满一行，新建一行
@@ -87,8 +87,7 @@ public class MyFlowLayout extends ViewGroup {
                 flowLayoutWidth=Math.max(flowLayoutWidth,lineWidth);
                 flowLayoutHeight+=lineHeight;
                 //保存每一行的高度
-                heights.add(flowLayoutHeight);
-
+                heights.add(lineHeight);
                 lineWidth=0;
                 lineHeight=0;
             }
@@ -96,14 +95,13 @@ public class MyFlowLayout extends ViewGroup {
             lineViews.add(child);
             //当前行的宽度
             lineWidth+=childWidth+lp.leftMargin+lp.rightMargin;
-            //取当前行控件的最大高度作为当前行高度
+            //取当前行所有控件中最大的高度作为当前行高度
             lineHeight = Math.max(lineHeight, childHeight + lp.topMargin + lp.bottomMargin);
             //处理最后一行，最后一行不会超出当前行的长度，所以要特殊处理
             if(i==childCount-1){
-                flowLayoutWidth=Math.max(flowLayoutWidth,lineWidth);
-                flowLayoutHeight+=lineHeight;
-                //保存每一行的高度
-                heights.add(flowLayoutHeight);
+                flowLayoutHeight += lineHeight;
+                flowLayoutWidth = Math.max(flowLayoutWidth, lineWidth);
+                heights.add(lineHeight);
                 views.add(lineViews);
             }
         }
@@ -114,7 +112,7 @@ public class MyFlowLayout extends ViewGroup {
         int width = widthmode == MeasureSpec.EXACTLY ? widthsize : flowLayoutWidth + getPaddingLeft() + getPaddingRight();
         realHeight=flowLayoutHeight+getPaddingTop()+getPaddingBottom();
         if(heightmode==MeasureSpec.EXACTLY){
-            realHeight=Math.max(realHeight,measuredHeight);
+            realHeight=Math.max(measuredHeight,realHeight);
         }
         scrollable = realHeight > measuredHeight;
         setMeasuredDimension(width, realHeight);

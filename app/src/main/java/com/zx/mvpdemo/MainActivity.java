@@ -1,5 +1,4 @@
 package com.zx.mvpdemo;
-
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -29,7 +28,8 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
     @ViewInject(R.id.bt_2)
     private Button bt_2;
 //    private LoginPresenter_4 presenter;
-
+    @ViewInject(R.id.startRxjava)
+    private Button startRxjava;
     private IMyAidlInterface myAidlInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,37 +45,20 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
 
     //3.0版本->写法
     @Event(
-            value = {R.id.bt_1, R.id.bt_2},
+            value = {R.id.bt_1, R.id.bt_2,R.id.startRxjava},
             type = View.OnClickListener.class,
             setter = "setOnClickListener",
             method = "onClick")
-          public void click(View v) {
+    public void click(View v) {
         if (v.getId() == R.id.bt_1) {
-            Toast.makeText(MainActivity.this, "点击了Button->1", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent();
-                intent.setAction("com.zx.xutils.myservice.MyService");
-                intent.setPackage("com.zx.xutils.binderservice");
-                bindService(intent, new ServiceConnection() {
-                    @Override
-                    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                        myAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
-                        try {
-                            myAidlInterface.setName("大炮");
-                            Toast.makeText(MainActivity.this,myAidlInterface.getName(),Toast.LENGTH_LONG).show();
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName componentName) {
-
-                    }
-                },BIND_AUTO_CREATE);
+            startremoteserver();
 //            loginServer();
         } else if (v.getId() == R.id.bt_2) {
             Toast.makeText(this, "点击了Button->2", Toast.LENGTH_LONG).show();
+        }else if(v.getId() ==R.id.startRxjava){
+            Intent intent = new Intent();
+            intent.setAction("com.zx.mvpdemo.RxjavaDemoActivity");
+            startActivity(intent);
         }
     }
 
@@ -252,5 +235,29 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
         Toast.makeText(MainActivity.this, "登录结果：" + result, Toast.LENGTH_LONG).show();
     }
     //很多时候：技术，思路？
+
+    private void startremoteserver(){
+        Toast.makeText(MainActivity.this, "点击了Button->1", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent();
+        intent.setAction("com.zx.xutils.myservice.MyService");
+        intent.setPackage("com.zx.xutils.binderservice");
+        bindService(intent, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                myAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+                try {
+                    myAidlInterface.setName("大炮");
+                    Toast.makeText(MainActivity.this,myAidlInterface.getName(),Toast.LENGTH_LONG).show();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+
+            }
+        },BIND_AUTO_CREATE);
+    }
 
 }

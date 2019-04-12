@@ -180,6 +180,10 @@ public class RxjavaDemoActivity extends AppCompatActivity implements View.OnClic
         button3.setOnClickListener(this);
     }
 
+    private void rxjava4(){
+
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

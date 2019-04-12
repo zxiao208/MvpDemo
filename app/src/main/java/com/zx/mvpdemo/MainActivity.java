@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.zx.mvpdemo.R;
+import com.zx.mvpdemo.demo.SlideMoreActivity;
 import com.zx.mvpdemo.framework.ContentView;
 import com.zx.mvpdemo.framework.Event;
 import com.zx.mvpdemo.framework.InjectUtils;
@@ -30,6 +31,8 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
 //    private LoginPresenter_4 presenter;
     @ViewInject(R.id.startRxjava)
     private Button startRxjava;
+    @ViewInject(R.id.startslidemore)
+    private Button startslidemore;
     private IMyAidlInterface myAidlInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
 
     //3.0版本->写法
     @Event(
-            value = {R.id.bt_1, R.id.bt_2,R.id.startRxjava},
+            value = {R.id.bt_1, R.id.bt_2,R.id.startRxjava,R.id.startslidemore},
             type = View.OnClickListener.class,
             setter = "setOnClickListener",
             method = "onClick")
@@ -58,6 +61,9 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
         }else if(v.getId() ==R.id.startRxjava){
             Intent intent = new Intent();
             intent.setAction("com.zx.mvpdemo.RxjavaDemoActivity");
+            startActivity(intent);
+        }else if(v.getId() ==R.id.startslidemore){
+            Intent intent = new Intent(this,SlideMoreActivity.class);
             startActivity(intent);
         }
     }

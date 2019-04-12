@@ -39,6 +39,12 @@
                android:layout_height="wrap_content"
                android:text="打开Rxjava"
                />
+           <Button
+               android:id="@+id/startslidemore"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="打开上拉查看详情"
+               />
        </com.zx.mvpdemo.myview.MyFlowLayout>
 
 

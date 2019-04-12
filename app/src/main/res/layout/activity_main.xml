@@ -29,22 +29,28 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/colorAccent"
         android:layout_marginLeft="50dp"/>
-
+    <Button
+        android:id="@+id/startRxjava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开Rxjava"
+        />
+    <Button
+        android:id="@+id/startslidemore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开上拉查看详情"
+        />
+    <Button
+        android:id="@+id/startslidemore2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开上拉查看详情2"
+        />
        <com.zx.mvpdemo.myview.MyFlowLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent">
-           <Button
-               android:id="@+id/startRxjava"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="打开Rxjava"
-               />
-           <Button
-               android:id="@+id/startslidemore"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="打开上拉查看详情"
-               />
+
        </com.zx.mvpdemo.myview.MyFlowLayout>
 
 

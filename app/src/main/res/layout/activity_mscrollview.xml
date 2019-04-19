@@ -1,77 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zx.mvpdemo.myview.ScrollViewContainer xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scrollview"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+
     >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        tools:layout_editor_absoluteY="0dp"
+        android:fitsSystemWindows="true"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:id="@+id/tv_tab1"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="商品"
+                android:gravity="center"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tv_tab2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="详情"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_marginLeft="1dp"
+                />
+            <TextView
+                android:id="@+id/tv_tab3"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="评价"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_marginLeft="1dp"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <com.zx.mvpdemo.myview.ScrollViewContainer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/scrollview"
+        >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉显文详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉图文详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉图文详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉图文详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉图文详情"
-                android:textSize="80sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉图文详情"
-                android:textSize="80sp" />
-            <!--上半部分的页面的布局-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上拉显示图文详情"
-                android:textSize="16sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111"
+                android:textSize="80sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111"
+                android:textSize="80sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111"
+                android:textSize="80sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111"
+                android:textSize="80sp" />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1111"
+            android:textSize="80sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111"
+                android:textSize="80sp" />
         </LinearLayout>
     </ScrollView>
+<com.zx.mvpdemo.swipetoloadlayout.SwipeToLoadLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@id/swipe_refresh_header"
+        layout="@layout/layout_twitter_header" />
 
     <ScrollView
+        android:id="@id/swipe_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/group"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
             android:orientation="vertical">
 
-            <WebView
-                android:id="@+id/webView"
+
+            <ImageView
+                android:id="@+id/ivOne"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/viewpager_height"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
 
-            </WebView>
+            <ImageView
+                android:id="@+id/ivTwo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewpager_height"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivThree"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewpager_height"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivFour"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewpager_height"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivFive"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/viewpager_height"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
         </LinearLayout>
     </ScrollView>
+</com.zx.mvpdemo.swipetoloadlayout.SwipeToLoadLayout>
 </com.zx.mvpdemo.myview.ScrollViewContainer>
+</LinearLayout>

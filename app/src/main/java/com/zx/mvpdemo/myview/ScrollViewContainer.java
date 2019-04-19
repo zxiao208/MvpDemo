@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -14,6 +15,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ScrollViewContainer extends RelativeLayout {
+
+    private static final String TAG="svc2";
 
     /**
      * 自动上滑
@@ -30,7 +33,7 @@ public class ScrollViewContainer extends RelativeLayout {
     /**
      * 动画速度
      */
-    public static final float SPEED = 8f;
+    public static final float SPEED = 16f;
 
     private boolean isMeasured = false;
 
@@ -131,6 +134,7 @@ public class ScrollViewContainer extends RelativeLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, "dispatchTouchEvent: ACTION_DOWN");
                 try {
                     if (vt == null)
                         vt = VelocityTracker.obtain();
@@ -144,11 +148,13 @@ public class ScrollViewContainer extends RelativeLayout {
                 mEvents = 0;
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
+                Log.i(TAG, "dispatchTouchEvent: ACTION_POINTER_DOWN");
             case MotionEvent.ACTION_POINTER_UP:
                 // 多一只手指按下或抬起时舍弃将要到来的第一个事件move，防止多点拖拽的bug
                 mEvents = -1;
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.i(TAG, "dispatchTouchEvent: ACTION_MOVE");
                 vt.addMovement(ev);
                 if (canPullUp && mCurrentViewIndex == 0 && mEvents == 0) {
                     mMoveLen += (ev.getY() - mLastY);
@@ -159,7 +165,6 @@ public class ScrollViewContainer extends RelativeLayout {
                     } else if (mMoveLen < -mViewHeight) {
                         mMoveLen = -mViewHeight;
                         mCurrentViewIndex = 1;
-
                     }
                     if (mMoveLen < -8) {
                         // 防止事件冲突
@@ -179,12 +184,14 @@ public class ScrollViewContainer extends RelativeLayout {
                         // 防止事件冲突
                         ev.setAction(MotionEvent.ACTION_CANCEL);
                     }
-                } else
+                } else {
                     mEvents++;
+                }
                 mLastY = ev.getY();
                 requestLayout();
                 break;
             case MotionEvent.ACTION_UP:
+                Log.i(TAG, "dispatchTouchEvent: ACTION_UP");
                 mLastY = ev.getY();
                 vt.addMovement(ev);
                 vt.computeCurrentVelocity(700);
@@ -201,10 +208,12 @@ public class ScrollViewContainer extends RelativeLayout {
                     }
                 } else {
                     // 抬起手指时速度方向决定两个View往哪移动
-                    if (mYV < 0)
+                    if (mYV < 0){
                         state = AUTO_UP;
-                    else
+                    }
+                    else {
                         state = AUTO_DOWN;
+                    }
                 }
                 mTimer.schedule(2);
                 break;
@@ -225,7 +234,7 @@ public class ScrollViewContainer extends RelativeLayout {
             topView = getChildAt(0);
             bottomView = getChildAt(1);
 
-            bottomView.setOnTouchListener(bottomViewTouchListener);
+//            bottomView.setOnTouchListener(bottomViewTouchListener);
             topView.setOnTouchListener(topViewTouchListener);
         }
         topView.layout(0, (int) mMoveLen, mViewWidth,
@@ -236,15 +245,16 @@ public class ScrollViewContainer extends RelativeLayout {
     }
 
     private OnTouchListener topViewTouchListener = new OnTouchListener() {
-
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             ScrollView sv = (ScrollView) v;
             if (sv.getScrollY() == (sv.getChildAt(0).getMeasuredHeight() - sv
-                    .getMeasuredHeight()) && mCurrentViewIndex == 0)
+                    .getMeasuredHeight()) && mCurrentViewIndex == 0) {
                 canPullUp = true;
-            else
+            }
+            else {
                 canPullUp = false;
+            }
             return false;
         }
     };
@@ -253,14 +263,17 @@ public class ScrollViewContainer extends RelativeLayout {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             ScrollView sv = (ScrollView) v;
-            if (sv.getScrollY() == 0 && mCurrentViewIndex == 1)
+            if (sv.getScrollY() == 0 && mCurrentViewIndex == 1){
                 canPullDown = true;
-            else
+            }
+            else {
                 canPullDown = false;
-            return false;
+            }
+                return false;
         }
     };
 
+    //执行滑动
     class MyTimer {
         private Handler handler;
         private Timer timer;

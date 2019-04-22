@@ -227,10 +227,8 @@ public class ScrollViewContainer extends RelativeLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (!isMeasured) {
             isMeasured = true;
-
             mViewHeight = getMeasuredHeight();
             mViewWidth = getMeasuredWidth();
-
             topView = getChildAt(0);
             bottomView = getChildAt(1);
 

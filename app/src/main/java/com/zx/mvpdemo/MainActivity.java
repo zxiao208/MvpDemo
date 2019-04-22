@@ -1,15 +1,23 @@
 package com.zx.mvpdemo;
+import android.annotation.TargetApi;
+import android.app.Presentation;
 import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.MediaRouter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.zx.mvpdemo.R;
+import com.zx.mvpdemo.demo.CustomDisplay;
 import com.zx.mvpdemo.demo.SlideMore2Activity;
 import com.zx.mvpdemo.demo.SlideMoreActivity;
 import com.zx.mvpdemo.framework.ContentView;
@@ -24,6 +32,8 @@ import com.zx.xutils.binderservice.IMyAidlInterface;
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> implements LoginView_8 {
 
+    MediaRouter mediaRouter;
+   Presentation presentation;
     @ViewInject(R.id.bt_1)
     private Button bt_1;
 
@@ -37,10 +47,33 @@ public class MainActivity extends BaseActivity_8<LoginView_8, LoginPresenter_8> 
     @ViewInject(R.id.startslidemore2)
     private Button startslidemore2;
     private IMyAidlInterface myAidlInterface;
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         InjectUtils.inject(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mediaRouter= (MediaRouter) getSystemService(Context.MEDIA_ROUTER_SERVICE);
+            MediaRouter.RouteInfo route =mediaRouter.getSelectedRoute(MediaRouter.ROUTE_TYPE_LIVE_VIDEO);
+            Display presentationDisplay=route !=null ? route.getPresentationDisplay() :null;
+            if(presentation !=null && presentation.getDisplay() != presentationDisplay){
+                presentation.dismiss();
+                presentation=null;
+            }
+
+            if(presentation==null && presentationDisplay != null){
+                presentation=new CustomDisplay(getApplicationContext(),presentationDisplay);
+                presentation.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+
+                    }
+                });
+                presentation.show();
+            }
+        }
+
+
     }
 
     //2.0版本->写法

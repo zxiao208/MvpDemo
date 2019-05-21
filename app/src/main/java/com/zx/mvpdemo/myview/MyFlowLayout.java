@@ -17,8 +17,6 @@ public class MyFlowLayout extends ViewGroup {
     private List<View> lineViews; //存储每一行中的元素
     private List<Integer> heights; //存储每一行的高度
     private boolean scrollable; // 是否可以滚动
-
-
     private int measuredHeight; // 测量得到的高度
     private int realHeight; // 整个流式布局控件的实际高度
     private int scrolledHeight = 0; // 已经滚动过的高度

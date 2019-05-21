@@ -136,10 +136,12 @@ public class ScrollViewContainer extends RelativeLayout {
             case MotionEvent.ACTION_DOWN:
                 Log.i(TAG, "dispatchTouchEvent: ACTION_DOWN");
                 try {
-                    if (vt == null)
+                    if (vt == null) {
                         vt = VelocityTracker.obtain();
-                    else
+                    }
+                    else {
                         vt.clear();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -156,6 +158,7 @@ public class ScrollViewContainer extends RelativeLayout {
             case MotionEvent.ACTION_MOVE:
                 Log.i(TAG, "dispatchTouchEvent: ACTION_MOVE");
                 vt.addMovement(ev);
+                //canPullUp子布局响应的时候cantainer不响应
                 if (canPullUp && mCurrentViewIndex == 0 && mEvents == 0) {
                     mMoveLen += (ev.getY() - mLastY);
                     // 防止上下越界
@@ -231,7 +234,6 @@ public class ScrollViewContainer extends RelativeLayout {
             mViewWidth = getMeasuredWidth();
             topView = getChildAt(0);
             bottomView = getChildAt(1);
-
 //            bottomView.setOnTouchListener(bottomViewTouchListener);
             topView.setOnTouchListener(topViewTouchListener);
         }

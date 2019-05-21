@@ -7,4 +7,5 @@ package com.zx.mvpdemo.simple.demo8.base;
  */
 
 public interface BaseView_8 {
+
 }

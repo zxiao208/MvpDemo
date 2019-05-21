@@ -9,6 +9,9 @@ import android.view.Display;
 
 import com.zx.mvpdemo.R;
 
+/**
+ * 双屏幕练习
+ */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class CustomDisplay extends Presentation {
     public CustomDisplay(Context outerContext, Display display) {

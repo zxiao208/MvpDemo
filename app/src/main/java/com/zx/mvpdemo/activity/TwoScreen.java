@@ -1,4 +1,4 @@
-package com.zx.mvpdemo;
+package com.zx.mvpdemo.activity;
 
 import android.annotation.TargetApi;
 import android.app.Presentation;
@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 
+import com.zx.mvpdemo.R;
 import com.zx.mvpdemo.demo.CustomDisplay;
 import com.zx.mvpdemo.framework.InjectUtils;
 import com.zx.mvpdemo.utils.CustomerEngine;
@@ -25,7 +26,9 @@ public class TwoScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
             setContentView(R.layout.fristscreen);
-             CustomerEngine.getInstance(getApplicationContext());
+            CustomerEngine.getInstance(getApplicationContext());
+
+             //下面的方法有问题
 //            mediaRouter= (MediaRouter) getSystemService(Context.MEDIA_ROUTER_SERVICE);
 //            MediaRouter.RouteInfo route =mediaRouter.getSelectedRoute(MediaRouter.ROUTE_TYPE_LIVE_VIDEO);
 //            Display presentationDisplay=route !=null ? route.getPresentationDisplay() :null;
@@ -44,8 +47,6 @@ public class TwoScreen extends AppCompatActivity {
 //                });
 //                presentation.show();
 //            }
-
-
 
     }
 

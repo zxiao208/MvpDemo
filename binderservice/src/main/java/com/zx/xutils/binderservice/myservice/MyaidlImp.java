@@ -5,7 +5,7 @@ import android.os.RemoteException;
 import com.zx.xutils.binderservice.IMyAidlInterface;
 
 public class MyaidlImp extends IMyAidlInterface.Stub {
-    String name ="李四";
+    String name ="smaa";
     @Override
     public String getName() throws RemoteException {
         return name;

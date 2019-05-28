@@ -4,8 +4,9 @@
 
     <!-- 显示系统窗口权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <!-- 在 屏幕最顶部显示addview -->
+    <!-- 在屏幕最顶部显示addview -->
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <!-- 网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -29,7 +30,9 @@
         </activity>
         <activity android:name=".demo.SlideMoreActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".demo.RetrofitDemo" />
         <activity android:name=".demo.SlideMore2Activity" />
+        <activity android:name=".demo.Dagger2Demo" />
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.zx.mvpdemo.base.BaseActivity;
+import com.zx.mvpdemo.demo.RetrofitDemo;
 import com.zx.mvpdemo.demo.RxjavaDemoActivity;
 
 import butterknife.BindView;
@@ -37,7 +38,7 @@ public class SelectActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_retrofit:
-                Intent intent2 = new Intent(this, RxjavaDemoActivity.class);
+                Intent intent2 = new Intent(this, RetrofitDemo.class);
                 startActivity(intent2);
                 break;
             case R.id.btn_main:

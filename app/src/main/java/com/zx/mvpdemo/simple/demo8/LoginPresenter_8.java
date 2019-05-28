@@ -13,12 +13,10 @@ import com.zx.mvpdemo.utils.HttpUtils;
 //P层搞定了
 //和V层进行交互->接口
 public class LoginPresenter_8 extends BasePresenter_8<LoginView_8> {
-
     private LoginModel_8 loginModel;
     public LoginPresenter_8(){
         this.loginModel = new LoginModel_8();
     }
-
     public void login(String username, String password){
         this.loginModel.login(username, password, new HttpUtils.OnHttpResultListener() {
             @Override

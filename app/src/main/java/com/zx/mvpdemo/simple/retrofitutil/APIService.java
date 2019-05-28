@@ -58,9 +58,6 @@ public interface APIService {
      * 15 @Header	作为方法的参数传入，用于添加不固定值的Header，该注解会更新已有的请求头
      */
 
-
-    public interface ApiService {
-
         /**
          * 1.get无参请求
          * https://api.github.com/users/basil2style
@@ -273,5 +270,4 @@ public interface APIService {
                                                                    @Query("plat") String plat,
                                                                    @Query("version") String version);
 
-    }
 }

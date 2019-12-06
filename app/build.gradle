@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.zx.mvpdemo"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -39,13 +39,14 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'//转换器，请求结果转换成Model
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'//配合Rxjava 使用
     implementation'com.squareup.okhttp3:logging-interceptor:3.12.0'
-    implementation 'com.google.dagger:dagger:2.17'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.17'
+    implementation 'com.google.dagger:dagger:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     testImplementation 'junit:junit:4.12'
     implementation('com.github.bumptech.glide:glide:4.8.0')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-//如果使用了在Kotlin中使用了Glide注解，需要引入kapt依赖代替annotationProcessor依赖
-//kapt 'com.github.bumptech.glide:compiler:4.8.0'
+//    implementation 'com.cxx.utils:mylibrary:1.0.0'
+    //如果使用了在Kotlin中使用了Glide注解，需要引入kapt依赖代替annotationProcessor依赖
+    //kapt 'com.github.bumptech.glide:compiler:4.8.0'
 }

@@ -4,14 +4,16 @@ import com.zx.mvpdemo.dagger.present.Shotting;
 
 import javax.inject.Inject;
 
-public class Police implements Shotting {
+public class Police  {
     BadMan badMan;
     @Inject
     public Police(BadMan badMan) {
-        this.badMan = badMan;
+        this.badMan=badMan;
     }
 
-    @Override
+    public String useBadMan(){
+        return badMan.run();
+    }
     public String killing() {
         return "bill bill";
     }
